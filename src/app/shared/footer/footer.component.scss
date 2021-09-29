@@ -1,0 +1,32 @@
+@import '/src/scss/variables/variables';
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:$padding;
+    .links {
+        display: flex;
+        justify-content: flex-start;
+        a {
+            text-decoration: none;
+            color:black;
+            padding-left: $padding;
+            padding-right:$padding;
+      
+        }
+        a:not(:last-child) {
+            border-right: 1px solid lightgray
+        }
+        a:hover {
+            color:grey;
+        }
+    }
+    .information {
+        display:flex;
+        flex-direction: column;
+        span {
+            text-align: right;
+        }
+    }
+  
+}

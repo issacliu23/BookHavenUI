@@ -1,18 +1,26 @@
+@import '/src/scss/variables/variables';
 .header {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding:20px;
+    padding:$padding;
     .logo {
-        font-size:24px;
+        font-size:$logo-font-size;
         font-weight: bold;
     }
     .types {
         display:flex;
-        span {
+        font-weight: 500;
+        a {
+            font-size:16px;
             margin-left:30px;
             margin-right:30px;
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            color:grey;
         }
     }
     .actions {
@@ -23,7 +31,7 @@
     }
 }
 
-.mat-coins {
-    background-color:aquamarine;
-    color:red;
+.mat-publish {
+    background-color: black;
+    color: white;
 }
