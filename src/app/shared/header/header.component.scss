@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+    .logo {
+        font-size:24px;
+        font-weight: bold;
+    }
+    .types {
+        display:flex;
+        span {
+            margin-left:30px;
+            margin-right:30px;
+        }
+    }
+    .actions {
+        display:flex;
+        button {
+            margin-left:20px;
+        }
+    }
+}
+
+.mat-coins {
+    background-color:aquamarine;
+    color:red;
+}

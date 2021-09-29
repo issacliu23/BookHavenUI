@@ -1,0 +1,21 @@
+<div class="base">
+    <div class="search-bar-wrapper">
+        <input class="search-bar" matInput type="search" placeholder="Search book titles, authors, genres...">
+    </div>
+    <div class="book-cards">
+        <ng-container [ngTemplateOutlet]="0!=0 ? bookList : emptyList"></ng-container>
+    </div>
+</div>
+
+<ng-template #bookList>
+    <div>
+      <!-- book cards belong here -->
+    </div>
+  </ng-template>
+  
+  <ng-template #emptyList>
+    <div>
+        It's empty
+    </div>
+  </ng-template>
+  

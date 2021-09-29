@@ -1,0 +1,31 @@
+.base {
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    min-height:100%;
+}
+
+.search-bar-wrapper {
+    flex:3;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background: url("/assets/images/search-bar-background.jfif") ;
+    // background-size: 100% 100%;
+    .search-bar {
+        width:50%;
+        height:20%;
+        border-radius: 20px;
+        padding-left:15px;
+        border: 0
+    }
+    input:focus {
+        outline: none;
+    }
+
+}
+
+.book-cards {
+    flex:7;
+    background-color: grey;
+}
