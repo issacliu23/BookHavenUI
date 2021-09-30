@@ -7,13 +7,13 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './feature/home/home.component';
 import { CustomMaterialModule } from './shared/custom-material/custom-material.module';
+import { BookCardComponent } from './shared/ui-component/book-card/book-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent,
-    HomeComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

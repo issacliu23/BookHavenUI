@@ -3,7 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './feature/home/home.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { 
+    path: 'home', 
+    pathMatch: 'full', 
+    loadChildren: () => import('src/app/feature/home/home.module').then(mod => mod.HomeModule)
+  }
 ];
 
 @NgModule({

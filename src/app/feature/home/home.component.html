@@ -3,18 +3,17 @@
         <input class="search-bar" matInput type="search" placeholder="Search book titles, authors, genres...">
     </div>
     <div class="book-cards">
-        <ng-container [ngTemplateOutlet]="0!=0 ? bookList : emptyList"></ng-container>
+        <ng-container [ngTemplateOutlet]="books.length > 0 ? bookList : emptyList"></ng-container>
     </div>
 </div>
 
 <ng-template #bookList>
-    <div>
-      <!-- book cards belong here -->
-    </div>
-  </ng-template>
-  
-  <ng-template #emptyList>
-    <div>
-    </div>
-  </ng-template>
-  
+  <div *ngFor="let book of books">
+    <app-book-card [book]="book"></app-book-card>
+  </div>
+</ng-template>
+
+<ng-template #emptyList>
+  <div>
+  </div>
+</ng-template>
