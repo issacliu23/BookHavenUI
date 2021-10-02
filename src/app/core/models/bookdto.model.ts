@@ -7,7 +7,7 @@ export class BookDTO {
     summary: string;
     genreList: Genre[] = [];
     pointsRequiredForChapter: number;
-    coverImage: File;
+    coverImage: string;
     review: number;
     updatedDate: Date;
 }

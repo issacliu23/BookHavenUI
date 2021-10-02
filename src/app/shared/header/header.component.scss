@@ -1,4 +1,4 @@
-@import '/src/scss/variables/variables';
+@import '/src/scss/custom/variables';
 .header {
     display: flex;
     flex-direction: row;
@@ -30,7 +30,3 @@
     }
 }
 
-.mat-publish {
-    background-color: black;
-    color: white;
-}

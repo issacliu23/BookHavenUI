@@ -15,8 +15,7 @@ import { UIComponentModule } from 'src/app/shared/ui-component/ui-component.modu
                 path:  '',
                 component: HomeComponent
             }
-        ]),
-        CustomMaterialModule,
+        ])
     ],
     providers: [],
  })

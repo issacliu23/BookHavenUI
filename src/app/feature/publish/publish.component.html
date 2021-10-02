@@ -1,0 +1,63 @@
+<div class="base publish">
+    <form [formGroup]="publishForm" class="d-flex-row">
+        <div class="image-section">
+            <label class="custom-file-upload">
+                <input type="file" formcontrolName="coverImage" (change)="onFileChanged($event)"/>
+                <span *ngIf="!imageUrl">Upload Image</span>
+                <img *ngIf="imageUrl" src={{imageUrl}}>
+
+            </label>
+            <!-- <div *ngIf="!imageUrl">
+                <div style="width:200px; height:200px;">Cover Image</div>
+            </div> -->
+            <div class="image-restriction">
+                <span>Image size must be 1080x1080.</span>
+                <span>Image must be less than 500KB.</span>
+                <span> Only JPG, JPEG, and PNG formats are allowed.</span>
+
+            </div>
+        </div>
+        <div class="form-fields">
+            <mat-form-field appearance="outline" class="create-book__input">
+                <mat-label >Book Title (Less than 50 characters)</mat-label>
+                <input matInput formControlName="title" >
+            </mat-form-field>
+            <div class="genres">
+                <mat-form-field appearance="outline" class="create-book__input-short" style="margin-right:10px;">
+                    <mat-label>Genre 1</mat-label>
+                    <mat-select formControlName="genre1" name="genre1" >
+                        <mat-option [value]="" selected>Select</mat-option>
+                        <mat-option *ngFor="let genre of genreList" [value]="genre">
+                            {{ genre }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="create-book__input-short">
+                    <mat-label>Genre 2 (Optional)</mat-label>
+                    <mat-select formControlName="genre2" name="genre2">
+                        <mat-option [value]="" selected>Select</mat-option>
+                        <mat-option *ngFor="let genre of genreList" [value]="genre">
+                            {{ genre }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <mat-form-field name="summary" appearance="outline" class="create-book__input">
+                <mat-label>Summary (Less than 500 characters)</mat-label>
+                <textarea
+                  [maxLength]="500"
+                  formControlName="summary"
+                  placeholder="Less than 500 characters"
+                  matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="8"
+                  cdkAutosizeMaxRows="8">
+                </textarea>
+              </mat-form-field>
+            <div>
+                <button type="submit" (click)="submitForm()"mat-raised-button color="publish" class="app-button">Publish book</button>
+            </div>
+        </div>
+    </form>
+</div>

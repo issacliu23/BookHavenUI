@@ -8,6 +8,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './feature/home/home.component';
 import { CustomMaterialModule } from './shared/custom-material/custom-material.module';
 import { BookCardComponent } from './shared/ui-component/book-card/book-card.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BookCardComponent } from './shared/ui-component/book-card/book-card.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

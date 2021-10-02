@@ -1,0 +1,59 @@
+.publish {
+    padding: 3rem 5rem;
+}
+
+.image-section {
+    flex: 1;
+}
+
+.form-fields {
+    padding-left:10px;
+    flex:4; 
+}
+
+.create-book {
+    &__input {
+        // max-width: 480px;
+        width: 90%;
+        &-short {
+            max-width: 280px;
+            width: 100%;
+        }
+    }
+}
+.image-restriction {
+    color: grey;
+    font-size:12px;
+    font-weight:500;
+    span {
+        display:block;
+    }
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    width:250px;
+    height:250px;
+    display: inline-block;
+    cursor: pointer;
+    background: rgba(211,211,211,0.5);
+    margin: auto;
+    text-align: center;
+    line-height:250px;
+    margin-bottom: 10px;
+    span {
+        font-weight:500;
+        color:gray;
+    }
+    img {
+        width:250px;
+        height:250px;
+    }
+}
+input[type="file"] {
+    display: none;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: white;
+    border-radius: 5px;
+  
+}

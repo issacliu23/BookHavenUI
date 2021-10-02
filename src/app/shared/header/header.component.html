@@ -6,8 +6,10 @@
         <a href="#">GENRES</a>
     </div>
     <div class="actions" style="flex:1;">
-        <button mat-stroked-button>0 &#169;</button>
-        <button mat-raised-button color="publish">Publish</button>
+        <button mat-stroked-button>
+            <span>0</span> <img style="margin-left:5px; height:16px; width:16px;"src="assets/images/coin.png">
+        </button>
+        <button mat-raised-button color="publish" [routerLink]="['/publish']">Publish</button>
         <button mat-raised-button>Login</button>
     </div>
 

@@ -1,15 +1,19 @@
-@import '/src/scss/variables/variables';
+@import '/src/scss/custom/variables';
 .footer {
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: rgb(46, 46, 46);
+    color:white;
+    // flex:2;
+    // height:1
     padding:$padding;
     .links {
         display: flex;
         justify-content: flex-start;
         a {
+            color:white;
             text-decoration: none;
-            color:black;
             padding-left: $padding;
             padding-right:$padding;
       

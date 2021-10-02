@@ -1,13 +1,21 @@
-<mat-card class="card">
-    <mat-card-header class="card__header">
-        <mat-card-title>{{book.bookTitle}}</mat-card-title>
-        <mat-card-subtitle>{{book.review}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="cover image">
-    <mat-card-footer class="card__footer">
-        <div>
-            <span> {{ book.authorName}} </span>
-            <span> {{ book.updatedDate | date: "dd MMMM yyyy" }} </span>
+<!-- <mat-card class="book-card" style= "background: url({{book.coverImage}});"> -->
+<mat-card class="book-card">
+    <mat-card-content class="card-header">
+        <div style="display:flex; justify-content: space-between; align-items: center;">
+            <mat-card-title>{{book.bookTitle}}</mat-card-title>
+            <img style="height:40px; width:40px;" src="/assets/images/book-new.png">
         </div>
-    </mat-card-footer>
+        <div style="display:flex; align-items: end;">
+            <mat-icon style="color: #00dc64;" aria-hidden="false" aria-label="star">star</mat-icon>
+            <span style="color: #00dc64;font-weight:500; margin-left:5px;">{{book.review}}</span>
+
+        </div>
+
+    </mat-card-content>
+    <img class="cover-image" mat-card-image src="{{book.coverImage}}" alt="cover image">
+
+    <mat-card-content class="card-footer">
+        <span> {{ book.authorName}} </span>
+        <span> {{ book.updatedDate | date: "dd MMMM yyyy" }} </span>
+    </mat-card-content>
 </mat-card>

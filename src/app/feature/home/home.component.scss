@@ -1,15 +1,12 @@
-@import '/src/scss/variables/variables';
-.base {
-    display: flex;
-    flex-direction: column;
-    height:100%;
-    min-height:100%;
-}
+@import '/src/scss/custom/variables';
+@import '/src/scss/custom/responsive';
+
 
 .search-bar-wrapper {
-    flex:4;
     display:flex;
-    min-height: 35%;
+    flex:3;
+
+    min-height: 150px;
     align-items: center;
     justify-content: center;
     background: url("/assets/images/search-bar-background.jfif") ;
@@ -29,6 +26,12 @@
 
 .book-cards {
     flex:7;
-    background-color: lightgray;
     padding:$padding;
+}
+.grid {
+    width: 280px;
+
+    display: inline-block;
+    padding: 1rem 1rem;
+
 }

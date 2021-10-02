@@ -1,14 +1,14 @@
-<div class="base">
+<div class="base d-flex-column">
     <div class="search-bar-wrapper">
         <input class="search-bar" matInput type="search" placeholder="Search book titles, authors, genres...">
     </div>
-    <div class="book-cards">
+    <div class="book-cards padding-wrap">
         <ng-container [ngTemplateOutlet]="books.length > 0 ? bookList : emptyList"></ng-container>
     </div>
 </div>
 
 <ng-template #bookList>
-  <div *ngFor="let book of books">
+  <div class="grid" *ngFor="let book of books">
     <app-book-card [book]="book"></app-book-card>
   </div>
 </ng-template>

@@ -1,11 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+@import '/src/scss/custom/variables';
+@import '/src/scss/custom/responsive';
+html {
+    min-height: 100%;
+    display: flex;
+}
+body { 
+    margin: 0; 
+    padding:0;
+    flex: 1;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
 
-.app {
-    display:flex;
-    flex-direction: column;
+.base {
     height:100%;
+    background-color: rgb(244,244,244);
+}
+
+.d-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.d-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.mat-publish {
+    background-color: black;
+    color: white;
+}
+
+.app-button {
+    border-radius:100px !important;
+    padding: 0.5rem 2rem !important;
 }
