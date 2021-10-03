@@ -9,20 +9,27 @@ import { HomeComponent } from './feature/home/home.component';
 import { CustomMaterialModule } from './shared/custom-material/custom-material.module';
 import { BookCardComponent } from './shared/ui-component/book-card/book-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginDialogComponent } from './feature/login-dialog/login-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UtilService } from './services/util.service';
+import { SignupComponent } from './feature/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginDialogComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CustomMaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UtilService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

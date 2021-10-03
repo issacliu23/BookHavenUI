@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Genre } from 'src/app/core/constants/enum';
+import { GenreEnum, GenreList } from 'src/app/core/constants/enum';
 
 @Component({
   selector: 'app-publish',
@@ -9,7 +9,7 @@ import { Genre } from 'src/app/core/constants/enum';
 })
 export class PublishComponent implements OnInit {
   publishForm: FormGroup;
-  genreList: Genre[] = [Genre.Comedy, Genre.Fantasy, Genre.Romance, Genre.Thriller];
+  genreList = GenreList;
   imageUrl: any;
   constructor(private formBuilder: FormBuilder) { }
 

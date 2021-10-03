@@ -10,7 +10,7 @@
             <span>0</span> <img style="margin-left:5px; height:16px; width:16px;"src="assets/images/coin.png">
         </button>
         <button mat-raised-button color="publish" [routerLink]="['/publish']">Publish</button>
-        <button mat-raised-button>Login</button>
+        <button mat-raised-button (click)="openLoginDialog()">Login</button>
     </div>
 
 </div>

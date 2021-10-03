@@ -4,7 +4,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 /**
  * decorator NgModule
@@ -17,7 +18,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     MatDividerModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   exports: [
     MatInputModule,
@@ -25,7 +27,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     MatDividerModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ]
 })
 export class CustomMaterialModule {}
