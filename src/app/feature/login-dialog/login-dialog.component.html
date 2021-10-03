@@ -1,5 +1,5 @@
 
-<form [formGroup]="loginForm" class="login-dialog">
+<form [formGroup]="loginForm" class="d-flex-column login-dialog">
 
     <mat-form-field appearance="outline" class="login__input">
         <mat-label >Email</mat-label>
@@ -15,7 +15,7 @@
     <button type="submit" (click)="login()" class="app-button" style="margin-top:10px;"  mat-flat-button color="publish">LOGIN</button>
 
     <mat-divider style="margin: 1rem;"></mat-divider>
-    <span style="text-align:center;">Don't have an account? <a href="#">Sign up now</a></span>
+    <span style="text-align:center;">Don't have an account? <a [routerLink]="['/signup']">Sign up now</a></span>
 </form>
 
   

@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './feature/home/home.component';
+import { PublishComponent } from './feature/publish/publish.component';
+import { SignupComponent } from './feature/signup/signup.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  { 
-    path: 'home', 
-    pathMatch: 'full', 
-    loadChildren: () => import('src/app/feature/home/home.module').then(mod => mod.HomeModule)
+    component: HomeComponent
   },
   { 
     path: 'publish', 
-    pathMatch: 'full', 
-    loadChildren: () => import('src/app/feature/publish/publish.module').then(mod => mod.PublishModule)
+    component: PublishComponent
+  },
+  { 
+    path: 'signup', 
+    component: SignupComponent
   }
 ];
 

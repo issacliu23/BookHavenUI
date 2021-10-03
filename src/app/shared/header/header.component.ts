@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginDialogComponent } from 'src/app/feature/login-dialog/login-dialog.component';
 import { UtilService } from 'src/app/services/util.service';
 
@@ -9,7 +10,7 @@ import { UtilService } from 'src/app/services/util.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private utilService: UtilService) { }
+  constructor(private router: Router, private utilService: UtilService) { }
 
   ngOnInit(): void {
   }

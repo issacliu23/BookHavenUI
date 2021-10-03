@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { ComponentType } from '@angular/cdk/portal';
+import { Router } from "@angular/router";
 
 /**
  * Injectable decorator
@@ -15,8 +16,11 @@ export class UtilService {
 
   openDialog(dialogComponent: ComponentType<any>, width?: string): MatDialogRef<any, any> {
     const config = {
-      width: width? width:'auto'
+      width: width? width:'auto',
+      closeOnNavigation: true
+
     };
+   
     return this.dialog.open(dialogComponent, config);
   }
 

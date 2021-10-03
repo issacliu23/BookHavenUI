@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-login-dialog',
@@ -10,7 +12,7 @@ export class LoginDialogComponent implements OnInit {
 
   loginForm: FormGroup;
   hidePassword: boolean = true;
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private utilService: UtilService, private formBuilder:FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -19,7 +21,10 @@ export class LoginDialogComponent implements OnInit {
     });
   }
 
+ 
   login() {
-    
+
   }
+
+ 
 }

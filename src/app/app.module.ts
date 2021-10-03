@@ -13,6 +13,9 @@ import { LoginDialogComponent } from './feature/login-dialog/login-dialog.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { UtilService } from './services/util.service';
 import { SignupComponent } from './feature/signup/signup.component';
+import { CommonModule } from '@angular/common';
+import { UIComponentModule } from './shared/ui-component/ui-component.module';
+import { PublishComponent } from './feature/publish/publish.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +24,14 @@ import { SignupComponent } from './feature/signup/signup.component';
     HeaderComponent,
     LoginDialogComponent,
     SignupComponent,
+    PublishComponent,
+    HomeComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
+    UIComponentModule,
     CustomMaterialModule,
     BrowserAnimationsModule,
     ReactiveFormsModule

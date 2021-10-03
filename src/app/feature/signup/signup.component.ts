@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-signup',
@@ -6,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
-  constructor() { }
+  signupForm: FormGroup;
+  constructor(private utilService: UtilService) {
+   }
 
   ngOnInit(): void {
   }

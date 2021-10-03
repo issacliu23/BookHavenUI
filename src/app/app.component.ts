@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NavigationStart, Router, RouterEvent } from '@angular/router';
+import { filter, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,3 +11,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'bookhavenui';
 }
+
+
