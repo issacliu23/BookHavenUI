@@ -7,15 +7,13 @@ phases:
     runtime-versions:
       nodejs: 14.x
     commands:
-      - echo install process started
+      - echo "install process started"
       - npm install && npm install -g @angular/cli
   build:
     commands:
-      - echo build process started now
-      - ng build --configuration=production
+      - echo "build process started now"
+      - ng build --prod
   post_build:
     commands:
-      - echo build process finished, we should upload to S3 now
-      - cd dist/$APP_NAME
-      - ls -la
-      - aws s3 sync . s3://bookhaven-ui --delete
+      - echo "build process finished, we should upload to S3 now"
+      - aws s3 sync dist/bookhavenui s3://bookhaven-ui --delete
