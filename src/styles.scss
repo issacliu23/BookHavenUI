@@ -29,6 +29,7 @@ html {
 .base {
     height:100%;
     background-color: rgb(244,244,244);
+    padding: 3rem 5rem;
 }
 
 .d-flex-column {
@@ -41,7 +42,7 @@ html {
     flex-direction: row;
 }
 
-.mat-publish {
+.mat-black {
     background-color: black;
     color: white;
 }

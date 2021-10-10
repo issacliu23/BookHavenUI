@@ -1,0 +1,33 @@
+<!-- <mat-card class="book-card" style= "background: url({{book.coverImage}});"> -->
+<div class="base">
+    <div class="wallet">
+        <mat-card class="wallet__card">
+            <mat-card-content class="wallet__card-content">
+                <div class="d-flex-column" style=" padding:1.5rem;">
+                    <span style="font-size:16px; margin-bottom:10px; color:gray">WALLET BALANCE</span>
+                    <div class="d-flex-row" style="align-items: center;">
+                        <span style="font-size:48px;">{{wallet.currentPoints}}</span> <img style="margin-left:5px; height:48px; width:48px;"src="assets/images/coin.png">
+                    </div>
+                </div>
+                <div class="d-flex-column" style="color:gray; font-style: italic;">
+                    <span>Conversion rate</span>
+                    <div style="display:flex; align-items: center;">
+                        <span>1 <span style="font-weight: 500;">SGD</span> = 10 </span> <img style="margin-left:5px; height:16px; width:16px;"src="assets/images/coin.png">
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-content class="wallet__card-actions">
+                <button mat-flat-button color="accent" (click)="topUpWallet()">Top-up</button>
+                <button mat-flat-button color="black" (click)="withdrawWallet()" style="margin-left: 15px;">Withdraw</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <mat-divider style="margin: 1rem 0;"></mat-divider>
+    <div class="transaction-history">
+        <table mat-table [dataSource]="tableData">
+
+        </table>
+
+    </div>
+<div>

@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
 /**
  * decorator NgModule
@@ -19,7 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDividerModule,
     MatCardModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   exports: [
     MatInputModule,
@@ -28,7 +30,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDividerModule,
     MatCardModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ]
 })
 export class CustomMaterialModule {}

@@ -16,6 +16,7 @@ import { SignupComponent } from './feature/signup/signup.component';
 import { CommonModule } from '@angular/common';
 import { UIComponentModule } from './shared/ui-component/ui-component.module';
 import { PublishComponent } from './feature/publish/publish.component';
+import { WalletComponent } from './feature/wallet/wallet.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PublishComponent } from './feature/publish/publish.component';
     LoginDialogComponent,
     SignupComponent,
     PublishComponent,
-    HomeComponent
+    HomeComponent,
+    WalletComponent
   ],
   imports: [
     CommonModule,

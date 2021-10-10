@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UtilService } from 'src/app/services/util.service';
 
 @Component({
@@ -9,10 +9,22 @@ import { UtilService } from 'src/app/services/util.service';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  constructor(private utilService: UtilService) {
-   }
+  hidePassword: boolean = true;
+  hideConfirmPassword: boolean = true;
+
+  constructor(private utilService: UtilService, private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
+    this.signupForm = this.formBuilder.group({
+      emailAddress: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required])
+    });
+  }
+
+  submitForm(): void {
+
   }
 
 }

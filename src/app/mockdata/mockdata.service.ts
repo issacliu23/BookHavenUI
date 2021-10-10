@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
+import { TransactionTypeEnum } from "../core/constants/enum";
 import { BookDTO } from "../core/models/bookdto.model";
+import { TransactionHistory } from "../core/models/transactionHistory";
 
 @Injectable({
   providedIn: 'root'
@@ -56,16 +58,57 @@ export class MockDataService {
     book6.updatedDate = new Date(); 
     book6.coverImage = "/assets/mockimages/hearthewindsing.jpg";
 
-    books.push(book1);
-    books.push(book2);
-    books.push(book3);
-    books.push(book4);
-    books.push(book5);
-    books.push(book6);
+    books.push(book1,book2,book3,book4,book5);
 
     return books;
   }
 
+  getMockTransactionHistoryData(): TransactionHistory[] {
+    let transactions: TransactionHistory[] = [];
+    let tx1: TransactionHistory = new TransactionHistory();
+    tx1.transactionId = "1";
+    tx1.cashDeducted = "10.00";
+    tx1.pointsAwarded = 100;
+    tx1.pointsDeducted = 0
+    tx1.transactionType = TransactionTypeEnum.TopUpWallet
+    tx1.transactionDate = new Date();
+
+    let tx2: TransactionHistory = new TransactionHistory();
+    tx2.transactionId = "2";
+    tx2.cashDeducted = "20.00";
+    tx2.pointsAwarded = 200;
+    tx2.pointsDeducted = 0
+    tx1.transactionType = TransactionTypeEnum.TopUpWallet
+    tx2.transactionDate = new Date();
+
+    let tx3: TransactionHistory = new TransactionHistory();
+    tx3.transactionId = "3";
+    tx3.cashDeducted = "-10.00";
+    tx3.pointsAwarded = 0;
+    tx3.pointsDeducted = 100
+    tx1.transactionType = TransactionTypeEnum.WithdrawFromWallet
+    tx3.transactionDate = new Date();
+    
+    let tx4: TransactionHistory = new TransactionHistory();
+    tx4.transactionId = "4";
+    tx4.cashDeducted = "0";
+    tx4.pointsAwarded = 0;
+    tx4.pointsDeducted = 5
+    tx1.transactionType = TransactionTypeEnum.PurchaseChapter
+    tx4.transactionDate = new Date();
+
+    let tx5: TransactionHistory = new TransactionHistory();
+    tx5.transactionId = "5";
+    tx5.cashDeducted = "0";
+    tx5.pointsAwarded = 0;
+    tx5.pointsDeducted = 5
+    tx1.transactionType = TransactionTypeEnum.PurchaseChapter
+    tx5.transactionDate = new Date();
+
+    transactions.push(tx1, tx2, tx3, tx4, tx5);
+    return transactions;
+
+  }
 
   
 
