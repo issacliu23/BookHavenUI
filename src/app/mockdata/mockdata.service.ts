@@ -67,43 +67,38 @@ export class MockDataService {
     let transactions: TransactionHistory[] = [];
     let tx1: TransactionHistory = new TransactionHistory();
     tx1.transactionId = "1";
-    tx1.cashDeducted = "10.00";
-    tx1.pointsAwarded = 100;
-    tx1.pointsDeducted = 0
+    tx1.cashInvolved = "10.00";
+    tx1.pointsInvolved = 100;
     tx1.transactionType = TransactionTypeEnum.TopUpWallet
-    tx1.transactionDate = new Date();
+    tx1.createdDate = new Date();
 
     let tx2: TransactionHistory = new TransactionHistory();
     tx2.transactionId = "2";
-    tx2.cashDeducted = "20.00";
-    tx2.pointsAwarded = 200;
-    tx2.pointsDeducted = 0
-    tx1.transactionType = TransactionTypeEnum.TopUpWallet
-    tx2.transactionDate = new Date();
+    tx2.cashInvolved = "20.00";
+    tx2.pointsInvolved = 200;
+    tx2.transactionType = TransactionTypeEnum.TopUpWallet
+    tx2.createdDate = new Date();
 
     let tx3: TransactionHistory = new TransactionHistory();
     tx3.transactionId = "3";
-    tx3.cashDeducted = "-10.00";
-    tx3.pointsAwarded = 0;
-    tx3.pointsDeducted = 100
-    tx1.transactionType = TransactionTypeEnum.WithdrawFromWallet
-    tx3.transactionDate = new Date();
+    tx3.cashInvolved = "-10.00";
+    tx3.pointsInvolved = -100
+    tx3.transactionType = TransactionTypeEnum.WithdrawFromWallet
+    tx3.createdDate = new Date();
     
     let tx4: TransactionHistory = new TransactionHistory();
     tx4.transactionId = "4";
-    tx4.cashDeducted = "0";
-    tx4.pointsAwarded = 0;
-    tx4.pointsDeducted = 5
-    tx1.transactionType = TransactionTypeEnum.PurchaseChapter
-    tx4.transactionDate = new Date();
+    tx4.cashInvolved = "0";
+    tx4.pointsInvolved = -5
+    tx4.transactionType = TransactionTypeEnum.PurchaseChapter
+    tx4.createdDate = new Date();
 
     let tx5: TransactionHistory = new TransactionHistory();
     tx5.transactionId = "5";
-    tx5.cashDeducted = "0";
-    tx5.pointsAwarded = 0;
-    tx5.pointsDeducted = 5
-    tx1.transactionType = TransactionTypeEnum.PurchaseChapter
-    tx5.transactionDate = new Date();
+    tx5.cashInvolved = "0";
+    tx5.pointsInvolved = -5
+    tx5.transactionType = TransactionTypeEnum.PurchaseChapter
+    tx5.createdDate = new Date();
 
     transactions.push(tx1, tx2, tx3, tx4, tx5);
     return transactions;

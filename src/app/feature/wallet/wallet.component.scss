@@ -16,6 +16,11 @@
    
     }
 }
+.transaction-history {
+    table {
+        width: 100%;
+    }
+}
 
 ::ng-deep .wallet mat-card{
     border-radius: 20px;

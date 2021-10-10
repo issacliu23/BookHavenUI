@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 /**
  * decorator NgModule
@@ -21,7 +22,8 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatSelectModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports: [
     MatInputModule,
@@ -31,7 +33,8 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatSelectModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class CustomMaterialModule {}
