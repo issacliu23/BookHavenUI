@@ -1,0 +1,56 @@
+<div class="base">
+    <div class="book-detail d-flex-column">
+        <div class="book-detail__header">
+            <img src={{book.coverImage}}>
+            <div class="book-detail__header__info">
+                <label style="font-size:40px; line-height:40px; font-weight: 500; margin-bottom:5px;">{{book.bookTitle}}</label>
+                <label style="font-size:16px; line-height:16px; margin-bottom:20px;">by <a style="color: #666666;" href="#">{{book.authorName}}</a></label>
+                <label class="align-center" style="margin-bottom:10px;">
+                    <mat-icon style="color: #00dc64; margin-right:5px; " aria-hidden="false" aria-label="star" >star</mat-icon>
+                    <div style="color: #666666;"> {{book.review | number:'1.2'}}</div>
+                </label>
+
+                <div class="d-flex-row" style="margin-bottom:20px;">
+                    <div class="book-detail__header__info__genre" 
+                        [ngStyle]="{ backgroundColor:getGenreDetail(genre)?.color }"
+                        *ngFor="let genre of book.genreList">{{getGenreDetail(genre)?.label}}
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <label style="margin:10px 0; font-weight:500;">Summary:</label>
+                <div class="book-detail__header__summary">
+                    {{book.summary}}
+                </div>
+            </div>
+        </div>
+     
+        <mat-divider style="margin: 0 -20px;"></mat-divider>
+
+        <div class="book-detail__chapters">
+            <table mat-table [dataSource]="tableData">
+                <ng-container *ngFor="let column of columnsToDisplay; let i = index;"  matColumnDef="{{column}}">
+                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef> {{headingsToDisplay[i]}} </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="book-detail__chapters__chapterNo-column" *ngIf="column ==='chapterNo' else dateCol">
+                            {{element[column]}}
+                        </div>
+                        <ng-template #dateCol>
+                            <div class="book-detail__chapters__date-column" *ngIf="column ==='createdDate' else normalCol">
+                                {{element[column] | date: 'dd MMM yyyy'}} 
+                            </div>
+                            <ng-template #normalCol>
+                                <div class="book-detail__chapters__title-column">
+                                    {{element[column]}}
+                                </div>
+                            </ng-template>
+                        </ng-template>
+                    </td>
+
+                </ng-container>
+                <tr  mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr [routerLink]="['/']" [queryParams]="{ chapterId: row.chapterId }"mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+            </table>
+            <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+        </div>
+    </div>
+</div>

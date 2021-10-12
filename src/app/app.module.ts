@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { UIComponentModule } from './shared/ui-component/ui-component.module';
 import { PublishComponent } from './feature/publish/publish.component';
 import { WalletComponent } from './feature/wallet/wallet.component';
+import { BookComponent } from './feature/book/book.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { WalletComponent } from './feature/wallet/wallet.component';
     SignupComponent,
     PublishComponent,
     HomeComponent,
-    WalletComponent
+    WalletComponent,
+    BookComponent
   ],
   imports: [
     CommonModule,

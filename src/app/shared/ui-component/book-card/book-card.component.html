@@ -1,5 +1,7 @@
 <!-- <mat-card class="book-card" style= "background: url({{book.coverImage}});"> -->
-<mat-card class="book-card">
+<mat-card class="book-card"
+    [routerLink]="['book', book.bookId]"
+>
     <mat-card-content class="card-header">
         <div style="display:flex; justify-content: space-between; align-items: center;">
             <mat-card-title>{{book.bookTitle}}</mat-card-title>

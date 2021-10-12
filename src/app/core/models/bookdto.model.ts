@@ -1,4 +1,5 @@
 import { GenreEnum } from "../constants/enum";
+import { Chapter } from "./chapter.model";
 
 export class BookDTO {
     bookId: string;
@@ -10,4 +11,5 @@ export class BookDTO {
     coverImage: string;
     review: number;
     updatedDate: Date;
+    chapterList: Chapter[] = [];
 }

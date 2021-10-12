@@ -6,10 +6,10 @@ export enum GenreEnum {
 }
 
 export const GenreList = [
-  { label: 'Fantasy', value: GenreEnum.Fantasy },
-  { label: 'Romance', value: GenreEnum.Romance },
-  { label: 'Thriller', value: GenreEnum.Thriller },
-  { label: 'Comedy', value: GenreEnum.Comedy }
+  { label: 'Fantasy', value: GenreEnum.Fantasy, color: '#B026FF' },
+  { label: 'Romance', value: GenreEnum.Romance, color: '#FF496C' },
+  { label: 'Thriller', value: GenreEnum.Thriller, color: '#FF0000' },
+  { label: 'Comedy', value: GenreEnum.Comedy, color: '#EEA800' }
 ]
 
 export enum TransactionTypeEnum {
