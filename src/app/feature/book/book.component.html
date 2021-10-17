@@ -1,7 +1,7 @@
-<div class="base">
+<div *ngIf="book" class="base">
     <div class="book-detail d-flex-column">
         <div class="book-detail__header">
-            <img src={{book.coverImage}}>
+            <img  [src]="getCoverImage(book.coverImage)">
             <div class="book-detail__header__info">
                 <label style="font-size:40px; line-height:40px; font-weight: 500; margin-bottom:5px;">{{book.bookTitle}}</label>
                 <label style="font-size:16px; line-height:16px; margin-bottom:20px;">by <a style="color: #666666;" href="#">{{book.authorName}}</a></label>
@@ -29,26 +29,31 @@
         <div class="book-detail__chapters">
             <table mat-table [dataSource]="tableData">
                 <ng-container *ngFor="let column of columnsToDisplay; let i = index;"  matColumnDef="{{column}}">
-                    <th style="padding-left: 20px;" mat-header-cell *matHeaderCellDef> {{headingsToDisplay[i]}} </th>
+                    <th mat-header-cell *matHeaderCellDef> {{headingsToDisplay[i]}} </th>
                     <td mat-cell *matCellDef="let element">
-                        <div class="book-detail__chapters__chapterNo-column" *ngIf="column ==='chapterNo' else dateCol">
-                            {{element[column]}}
+                        <div *ngIf="column ==='isLocked' else chapterNo">
+                            <mat-icon *ngIf="element[column]" aria-hidden="false" aria-label="lock" >lock</mat-icon>
                         </div>
-                        <ng-template #dateCol>
-                            <div class="book-detail__chapters__date-column" *ngIf="column ==='createdDate' else normalCol">
-                                {{element[column] | date: 'dd MMM yyyy'}} 
-                            </div>
-                            <ng-template #normalCol>
-                                <div class="book-detail__chapters__title-column">
-                                    {{element[column]}}
+                        <ng-template #chapterNo>
+                            <div class="book-detail__chapters__chapterNo-column" *ngIf="column ==='chapterNo' else dateCol">
+                                {{element[column]}}
+                            </div>       
+                            <ng-template #dateCol>
+                                <div class="book-detail__chapters__date-column" *ngIf="column ==='createdDate' else normalCol">
+                                    {{element[column] | date: 'dd MMM yyyy'}} 
                                 </div>
+                                <ng-template #normalCol>
+                                    <div class="book-detail__chapters__title-column">
+                                        {{element[column]}}
+                                    </div>
+                                </ng-template>
                             </ng-template>
                         </ng-template>
                     </td>
 
                 </ng-container>
-                <tr  mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-                <tr [routerLink]="['/']" [queryParams]="{ chapterId: row.chapterId }"mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr [ngClass]="{'chapter-locked': row.isLocked, 'chapter-read': row.isRead}" [routerLink]="['/']" [queryParams]="{ chapterId: row.chapterId }" mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
             </table>
             <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
         </div>

@@ -18,6 +18,8 @@ import { UIComponentModule } from './shared/ui-component/ui-component.module';
 import { PublishComponent } from './feature/publish/publish.component';
 import { WalletComponent } from './feature/wallet/wallet.component';
 import { BookComponent } from './feature/book/book.component';
+import { BookService } from './http-services/book.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,10 @@ import { BookComponent } from './feature/book/book.component';
     UIComponentModule,
     CustomMaterialModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [UtilService],
+  providers: [UtilService, BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

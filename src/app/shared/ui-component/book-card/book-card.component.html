@@ -9,12 +9,12 @@
         </div>
         <div style="display:flex; align-items: end;">
             <mat-icon style="color: #00dc64;" aria-hidden="false" aria-label="star">star</mat-icon>
-            <span style="color: #00dc64;font-weight:500; margin-left:5px;">{{book.review}}</span>
+            <span style="color: #00dc64;font-weight:500; margin-left:5px;">{{book.review | number:'1.2'}}</span>
 
         </div>
 
     </mat-card-content>
-    <img class="cover-image" mat-card-image src="{{book.coverImage}}" alt="cover image">
+    <img class="cover-image" mat-card-image [src]="getCoverImage(book.coverImage)" alt="cover image">
 
     <mat-card-content class="card-footer">
         <span> {{ book.authorName}} </span>

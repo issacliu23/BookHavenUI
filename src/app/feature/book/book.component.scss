@@ -51,7 +51,7 @@
 
 
         &__title-column {
-            padding-left: 20px;
+            // padding-left: 20px;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
@@ -70,4 +70,21 @@
 .mat-column-chapterNo {
     width: 2%;
     text-align:center;
+}
+
+.mat-column-isLocked {
+    width:0;
+}
+
+.chapter-locked {
+    background-color: #D2D2D2;
+    opacity: 0.6;
+}
+
+.chapter-read .mat-column-chapterTitle {
+    color:#00dc64;
+}
+
+.chapter-read .mat-column-chapterNo {
+    color:#00dc64;
 }

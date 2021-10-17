@@ -3,4 +3,6 @@ export class Chapter {
     chapterTitle: string;
     chapterNo: number;
     createdDate: Date;
+    isLocked: boolean;
+    isRead: boolean;
 }
