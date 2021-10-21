@@ -20,6 +20,7 @@ import { WalletComponent } from './feature/wallet/wallet.component';
 import { BookComponent } from './feature/book/book.component';
 import { BookService } from './http-services/book.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './http-services/user.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UtilService, BookService],
+  providers: [UtilService, BookService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
