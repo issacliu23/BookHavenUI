@@ -12,9 +12,12 @@ export class UserService {
     constructor(private httpClient: HttpClient){}
 
     register(user: AppUser): Observable<string> {
-
         const apiUrl = `${this.USER_API}/api/user/sign-up`;
         return this.httpClient.post<string>(apiUrl, user,  { responseType: 'text' as 'json'});
+    }
 
+    login(user: AppUser): Observable<any> {
+        const apiUrl = `${this.USER_API}/api/login`;
+        return this.httpClient.post<any>(apiUrl, user)
     }
 }

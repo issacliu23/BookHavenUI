@@ -1,17 +1,20 @@
 <div class="header">
     <div class="logo" style="flex:1;"><a href="" style="text-decoration: none; color:black;">BOOKHAVEN</a></div>
     <div class="types" style="flex:8;">
-        <a href="#" style="background-color: red;">NEW RELEASE</a>
+        <a href="#">NEW RELEASE</a>
         <a href="#">POPULAR</a>
         <a href="#">GENRES</a>
     </div>
-    <div class="actions" style="flex:1;">
-        <button mat-stroked-button [routerLink]="['/wallet']">
-            <span>0</span> <img style="margin-left:5px; height:16px; width:16px;"src="assets/images/coin.png">
-        </button>
-        <button mat-raised-button color="black" [routerLink]="['/publish']">Publish</button>
-        <button mat-raised-button (click)="openLoginDialog()">Login</button>
-        
+    <div class="actions" style="flex:1; justify-content: flex-end;">
+        <div *ngIf="email" class="d-flex-row">
+            <button mat-stroked-button [routerLink]="['/wallet']">
+                <span>0</span> <img style="margin-left:5px; height:16px; width:16px;"src="assets/images/coin.png">
+            </button>
+            <button mat-raised-button color="black" [routerLink]="['/publish']">Publish</button>
+            <button mat-raised-button>{{email}}</button>
+        </div>
+        <button *ngIf="!email" mat-raised-button (click)="openLoginDialog()">Login</button>
+
     </div>
 
 </div>

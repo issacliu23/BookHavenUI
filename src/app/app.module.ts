@@ -19,8 +19,10 @@ import { PublishComponent } from './feature/publish/publish.component';
 import { WalletComponent } from './feature/wallet/wallet.component';
 import { BookComponent } from './feature/book/book.component';
 import { BookService } from './http-services/book.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserService } from './http-services/user.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { HttpInterceptorService } from './core/interceptor/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -42,9 +44,16 @@ import { UserService } from './http-services/user.service';
     CustomMaterialModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
-  providers: [UtilService, BookService, UserService],
+  providers: [UtilService, BookService, UserService,   
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
