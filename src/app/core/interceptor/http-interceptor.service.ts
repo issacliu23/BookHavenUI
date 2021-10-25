@@ -26,16 +26,19 @@ export class HttpInterceptorService implements HttpInterceptor {
   }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const passThrough: boolean = !!this.excludedUrlsRegex.find(regex => regex.test(req.url));
-
+    let token = '';
     if (passThrough) {
       return next.handle(req);
     }
 
     this.totalRequests++;
     this.showLoader();
+    if(this.utilService.getToken()) {
+      token = `Bearer ${this.utilService.getToken()}`;
+    }
     const authReq = req.clone({ setHeaders: 
       { 
-        Authorization: `Bearer ${this.utilService.getToken()}`, 
+        Authorization: token, 
         // Support for IE11
         'Cache-Control': 'no-cache',
         Pragma: 'no-cache',

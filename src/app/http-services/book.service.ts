@@ -8,21 +8,20 @@ import { Book } from "../core/models/book.model";
 @Injectable()
 export class BookService {
     private BOOK_API = environment.API.BOOK_URL;
+    private apiUrl = `${this.BOOK_API}/api/book`;
 
     constructor(private httpClient: HttpClient){}
 
     public getAllBooks(): Observable<BookDTO[]> {
-        const apiUrl = `${this.BOOK_API}/book`;
-        return this.httpClient.get<BookDTO[]>(apiUrl);
+        // const apiUrl = `${this.BOOK_API}/book`;
+        return this.httpClient.get<BookDTO[]>(this.apiUrl);
     }
 
     public getBookById(bookId: string): Observable<BookDTO> {
-        const apiUrl = `${this.BOOK_API}/book/${bookId}`;
-        return this.httpClient.get<BookDTO>(apiUrl);
+        return this.httpClient.get<BookDTO>(`${this.apiUrl}/${bookId}`);
     }
 
     public publishBook(book: any, coverImage: File): Observable<Book> {
-        const apiUrl = `${this.BOOK_API}/book`;
         let headers = new HttpHeaders();
         headers.append('Content-Type', 'multipart/form-data');
         headers.set('Accept', 'application/json');
@@ -37,7 +36,7 @@ export class BookService {
         });
         formData.append('image', coverImage);
 
-        return this.httpClient.post<Book>(apiUrl, formData, { headers: headers });
+        return this.httpClient.post<Book>(this.apiUrl, formData, { headers: headers });
 
     }
 }
