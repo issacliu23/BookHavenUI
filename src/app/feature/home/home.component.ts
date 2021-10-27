@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // this.books = this.mockDataService.getMockBooks();
     this.bookService.getAllBooks().subscribe((data: BookDTO[]) => {
-      console.log(data);
       if(data) {
         this.books = data;
       }

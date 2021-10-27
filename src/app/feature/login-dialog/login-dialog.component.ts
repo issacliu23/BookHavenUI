@@ -22,8 +22,8 @@ export class LoginDialogComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
-    if(this.data.user) {
-      this.loginForm.get('email')?.setValue(this.data.user.email);
+    if(this.data) {
+      this.loginForm.get('email')?.setValue(this.data.email);
     }
   }
  

@@ -1,0 +1,10 @@
+<form [formGroup]="form" class="d-flex-column">
+    <h2 style="text-align:center">{{labelText}}</h2>
+    <mat-form-field appearance="outline">
+        <mat-label >Amount</mat-label>
+        <input matInput formControlName="amount">
+    </mat-form-field>
+    <button type="submit" (click)="confirm()" class="app-button" style="margin-top:10px;"  mat-flat-button color="black">CONFIRM</button>
+</form>
+
+  

@@ -4,7 +4,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { TransactionTypeEnum, TransactionTypeList } from 'src/app/core/constants/enum';
 import { TransactionHistory } from 'src/app/core/models/transactionHistory';
 import { Wallet } from 'src/app/core/models/wallet.model';
+import { WalletService } from 'src/app/http-services/wallet.service';
 import { MockDataService } from 'src/app/mockdata/mockdata.service';
+import { UtilService } from 'src/app/services/util.service';
+import { WalletDialogComponent } from './wallet-dialog/wallet-dialog.component';
 
 @Component({
   selector: 'app-wallet',
@@ -21,10 +24,14 @@ export class WalletComponent implements OnInit, AfterViewInit {
 
   tableData: MatTableDataSource<TransactionHistory>;
   pageSize = 10;
-  constructor(private mockDataService: MockDataService) { }
+  constructor(private mockDataService: MockDataService, private utilService: UtilService, private walletService: WalletService) { }
 
   ngOnInit(): void {
-    this.wallet.currentPoints = 100;
+    this.walletService.getWallet().subscribe(data => {
+      if(data) {
+        this.wallet = data;
+      }
+    })
     this.transactionHistories = this.mockDataService.getMockTransactionHistoryData();
     this.tableData = new MatTableDataSource<TransactionHistory>(this.transactionHistories);
 
@@ -34,8 +41,12 @@ export class WalletComponent implements OnInit, AfterViewInit {
     this.tableData.paginator = this.paginator;
   }
 
-  topUpWallet(): void {}
-  withdrawWallet(): void {}
+  topUpWallet(): void {
+    this.utilService.openDialog(WalletDialogComponent,'auto',true);
+  }
+  withdrawWallet(): void {
+    this.utilService.openDialog(WalletDialogComponent,'auto',false);
+  }
   displayTransactionTypeLabel(transactionType: TransactionTypeEnum): string {
     let label: string|undefined = TransactionTypeList.find(s => s.value === transactionType)?.label;
     if(label !== undefined) {

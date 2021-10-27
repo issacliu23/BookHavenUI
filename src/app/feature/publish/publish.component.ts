@@ -62,7 +62,6 @@ export class PublishComponent implements OnInit {
     book.bookTitle = this.title?.value;
     book.summary = this.summary?.value;
     book.pointsRequiredForChapter = 5;
-    book.authorName = "Issac";
     this.bookService.publishBook(book, this.coverImage).subscribe(data => {
       if(data.bookId) {
         this.router.navigate(["/"]);

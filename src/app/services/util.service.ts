@@ -15,13 +15,11 @@ export class UtilService {
 
   constructor(private dialog: MatDialog) { }
 
-  openDialog(dialogComponent: ComponentType<any>, width?: string, user?: AppUser): MatDialogRef<any, any> {
+  openDialog(dialogComponent: ComponentType<any>, width?: string, data?: any): MatDialogRef<any, any> {
     const config = {
       width: width? width:'auto',
       closeOnNavigation: true,
-      data: {
-        user: user
-      }
+      data: data
     };
    
     return this.dialog.open(dialogComponent, config);

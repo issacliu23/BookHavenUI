@@ -23,6 +23,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserService } from './http-services/user.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpInterceptorService } from './core/interceptor/http-interceptor.service';
+import { WalletService } from './http-services/wallet.service';
+import { WalletDialogComponent } from './feature/wallet/wallet-dialog/wallet-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { HttpInterceptorService } from './core/interceptor/http-interceptor.serv
     PublishComponent,
     HomeComponent,
     WalletComponent,
-    BookComponent
+    BookComponent,
+    WalletDialogComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +50,7 @@ import { HttpInterceptorService } from './core/interceptor/http-interceptor.serv
     HttpClientModule,
     NgxSpinnerModule
   ],
-  providers: [UtilService, BookService, UserService,   
+  providers: [UtilService, BookService, UserService, WalletService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
