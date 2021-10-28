@@ -11,6 +11,7 @@ import { UtilService } from 'src/app/services/util.service';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { WalletService } from 'src/app/http-services/wallet.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
+import { PaymentService } from 'src/app/http-services/payment.service';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -27,7 +28,7 @@ export class BookComponent implements OnInit  {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private walletService: WalletService, private utilService: UtilService, private mockDataService: MockDataService, private bookService:BookService, private route: ActivatedRoute) { }
+  constructor(private paymentService: PaymentService, private walletService: WalletService, private utilService: UtilService, private mockDataService: MockDataService, private bookService:BookService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -86,7 +87,9 @@ export class BookComponent implements OnInit  {
   }
 
   purchaseChapter(chapter:Chapter) {
-    
+    this.paymentService.purchaseChapter(chapter).subscribe(data => {
+      console.log(data);
+    })
   }
 
 
