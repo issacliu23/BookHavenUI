@@ -7,6 +7,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Chapter } from 'src/app/core/models/chapter.model';
 import { BookService } from 'src/app/http-services/book.service';
+import { UtilService } from 'src/app/services/util.service';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -17,17 +19,17 @@ export class BookComponent implements OnInit  {
   book: BookDTO;
 
   pageSize: number = 10;
-  headingsToDisplay = ['', 'No.', 'Chapter Title', 'Uploaded Date']
-  columnsToDisplay = ['isLocked','chapterNo', 'chapterTitle', 'createdDate']
+  headingsToDisplay = ['', 'No.', 'Chapter Title', 'Uploaded Date', 'Coins Required']
+  columnsToDisplay = ['isLocked','chapterNo', 'chapterTitle', 'createdDate', 'pointsRequiredForChapter']
   tableData: MatTableDataSource<Chapter>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private mockDataService: MockDataService, private bookService:BookService, private route: ActivatedRoute) { }
+  constructor(private utilService: UtilService, private mockDataService: MockDataService, private bookService:BookService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.bookId = this.route.snapshot.paramMap.get('id');
 
+    this.bookId = this.route.snapshot.paramMap.get('id');
     if(this.bookId !== null) {
       // this.book = this.mockDataService.getMockBookById(this.bookId);
       this.bookService.getBookById(this.bookId).subscribe(data => {
@@ -48,6 +50,23 @@ export class BookComponent implements OnInit  {
   getCoverImage(coverImage: any) {
     let data = "data:image/jpg;base64,"; 
     return data+coverImage.data;
+  }
+
+  getChapter(chapter: any) {
+    if(chapter.chapterNo <= 3) {
+      // call api retrieve content
+    } 
+    else {
+      if(this.utilService.getToken()) {
+
+      }
+      else {
+        alert("Please login first before purchasing any chapters");
+        this.utilService.openDialog(LoginDialogComponent);
+      }
+      //check if user is login
+      
+    }
   }
 
 

@@ -39,13 +39,18 @@
                                 {{element[column]}}
                             </div>       
                             <ng-template #dateCol>
-                                <div class="book-detail__chapters__date-column" *ngIf="column ==='createdDate' else normalCol">
+                                <div class="book-detail__chapters__date-column" *ngIf="column ==='createdDate' else titleCol">
                                     {{element[column] | date: 'dd MMM yyyy'}} 
                                 </div>
-                                <ng-template #normalCol>
-                                    <div class="book-detail__chapters__title-column">
+                                <ng-template #titleCol>
+                                    <div class="book-detail__chapters__title-column" *ngIf="column ==='chapterTitle' else coinCol">
                                         {{element[column]}}
                                     </div>
+                                    <ng-template #coinCol>
+                                        <div class="book-detail__chapters__coin-column" >
+                                            <span style="display: flex; align-content: center; z-index: 999;" *ngIf="element['isLocked']">{{book.pointsRequiredForChapter}} <img style="margin-left:5px; height:16px; width:16px;"src="assets/images/coin.png"></span>
+                                        </div>
+                                    </ng-template>
                                 </ng-template>
                             </ng-template>
                         </ng-template>
@@ -53,7 +58,7 @@
 
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-                <tr [ngClass]="{'chapter-locked': row.isLocked, 'chapter-read': row.isRead}" [routerLink]="['/']" [queryParams]="{ chapterId: row.chapterId }" mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+                <tr [ngClass]="{'chapter-locked': row.isLocked, 'chapter-read': row.isRead}" (click)="getChapter(row)" mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
             </table>
             <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
         </div>

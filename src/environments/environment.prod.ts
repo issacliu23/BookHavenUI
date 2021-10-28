@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
   API: {
-    BOOK_URL: 'internal-bookhaven-app-load-balancer-1836006333.ap-southeast-1.elb.amazonaws.com',
-    PAYMENT_URL: 'internal-bookhaven-app-load-balancer-1836006333.ap-southeast-1.elb.amazonaws.com',
-    REVIEW_URL: 'internal-bookhaven-app-load-balancer-1836006333.ap-southeast-1.elb.amazonaws.com',
-    USER_URL: 'internal-bookhaven-app-load-balancer-1836006333.ap-southeast-1.elb.amazonaws.com'
+    BOOK_URL: 'https://tt1hm8cruj.execute-api.ap-southeast-1.amazonaws.com/prod',
+    PAYMENT_URL: 'https://tt1hm8cruj.execute-api.ap-southeast-1.amazonaws.com/prod',
+    REVIEW_URL: 'https://tt1hm8cruj.execute-api.ap-southeast-1.amazonaws.com/prod',
+    USER_URL: 'https://tt1hm8cruj.execute-api.ap-southeast-1.amazonaws.com/prod'
   }
 };

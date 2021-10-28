@@ -4,6 +4,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Wallet } from 'src/app/core/models/wallet.model';
 import { WalletService } from 'src/app/http-services/wallet.service';
+import { EventService } from 'src/app/services/event.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-wallet-dialog',
@@ -14,7 +16,7 @@ export class WalletDialogComponent implements OnInit {
   labelText: string;
   form: FormGroup;
 
-  constructor(private formBuilder:FormBuilder, private router: Router, @Inject(MAT_DIALOG_DATA) public isTopUp: any, private walletService: WalletService) { }
+  constructor(private utilService: UtilService, private eventService:EventService, private formBuilder:FormBuilder, private router: Router, @Inject(MAT_DIALOG_DATA) public isTopUp: any, private walletService: WalletService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -35,7 +37,10 @@ export class WalletDialogComponent implements OnInit {
         this.walletService.topUpWallet(points).subscribe({
           next: (value: Wallet) => {
             if(value) {
-              window.location.reload();
+              this.eventService.sendUpdate("");
+              this.utilService.closeDialog();
+              this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+              this.router.navigate(['/wallet']));
             }
           },
           error: (err: any) => { alert("Please enter a valid input"); }
@@ -45,7 +50,10 @@ export class WalletDialogComponent implements OnInit {
         this.walletService.withdrawWallet(points).subscribe({
           next: (value: Wallet) => {
             if(value) {
-              window.location.reload();
+              this.eventService.sendUpdate("");
+              this.utilService.closeDialog();
+              this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+              this.router.navigate(['/wallet']));
             }
           },
           error: (err: any) => { alert("Please enter a valid input"); }
