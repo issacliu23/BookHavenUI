@@ -26,6 +26,7 @@ import { HttpInterceptorService } from './core/interceptor/http-interceptor.serv
 import { WalletService } from './http-services/wallet.service';
 import { WalletDialogComponent } from './feature/wallet/wallet-dialog/wallet-dialog.component';
 import { EventService } from './services/event.service';
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EventService } from './services/event.service';
     HomeComponent,
     WalletComponent,
     BookComponent,
-    WalletDialogComponent
+    WalletDialogComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,

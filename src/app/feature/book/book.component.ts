@@ -9,6 +9,8 @@ import { Chapter } from 'src/app/core/models/chapter.model';
 import { BookService } from 'src/app/http-services/book.service';
 import { UtilService } from 'src/app/services/util.service';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { WalletService } from 'src/app/http-services/wallet.service';
+import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -25,7 +27,7 @@ export class BookComponent implements OnInit  {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private utilService: UtilService, private mockDataService: MockDataService, private bookService:BookService, private route: ActivatedRoute) { }
+  constructor(private walletService: WalletService, private utilService: UtilService, private mockDataService: MockDataService, private bookService:BookService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -58,7 +60,14 @@ export class BookComponent implements OnInit  {
     } 
     else {
       if(this.utilService.getToken()) {
-
+        this.walletService.getWallet().subscribe(wallet => {
+          if(wallet.currentPoints >= this.book.pointsRequiredForChapter) { // can buy
+            this.confirmPurchase(chapter);
+          }
+          else { // cannot buy
+            alert("Insufficient points, please top-up your wallet before purchasing the chapter");
+          }
+        })
       }
       else {
         alert("Please login first before purchasing any chapters");
@@ -67,6 +76,17 @@ export class BookComponent implements OnInit  {
       //check if user is login
       
     }
+  }
+  confirmPurchase(chapter:Chapter) {
+    this.utilService.openDialog(DialogComponent).afterClosed().subscribe(data=>{
+      if(data === "CONFIRM") {
+        this.purchaseChapter(chapter);
+      }
+    })
+  }
+
+  purchaseChapter(chapter:Chapter) {
+    
   }
 
 
