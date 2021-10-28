@@ -17,7 +17,7 @@ export class ChapterService {
     public getChapterById(chapterId: string): Observable<any> {  
 
         // return this.httpClient.get<any>(`${this.apiUrl}/stream/${chapterId}`,{responseType: 'blob' as 'json'});
-        return this.httpClient.get(`${this.apiUrl}/stream/${chapterId}`, {  responseType: 'blob' as 'json' });
+        return this.httpClient.get(`${this.apiUrl}/content/${chapterId}`, {  responseType: 'blob' as 'json' });
     }
 
 }
