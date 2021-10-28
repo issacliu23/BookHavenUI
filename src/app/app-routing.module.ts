@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookComponent } from './feature/book/book.component';
+import { ChapterComponent } from './feature/chapter/chapter.component';
 import { HomeComponent } from './feature/home/home.component';
 import { PublishComponent } from './feature/publish/publish.component';
 import { SignupComponent } from './feature/signup/signup.component';
@@ -26,6 +27,10 @@ export const routes: Routes = [
   {
     path: 'book/:id',
     component: BookComponent
+  },
+  {
+    path: 'view/chapter',
+    component: ChapterComponent
   }
 ];
 

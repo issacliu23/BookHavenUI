@@ -29,6 +29,8 @@ import { EventService } from './services/event.service';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { PaymentService } from './http-services/payment.service';
 import { ChapterService } from './http-services/chapter.service';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ChapterComponent } from './feature/chapter/chapter.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ChapterService } from './http-services/chapter.service';
     WalletComponent,
     BookComponent,
     WalletDialogComponent,
-    DialogComponent
+    DialogComponent,
+    ChapterComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +56,8 @@ import { ChapterService } from './http-services/chapter.service';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    PdfViewerModule
   ],
   providers: [UtilService, BookService, UserService, WalletService, EventService, PaymentService, ChapterService,
     {

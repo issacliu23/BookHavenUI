@@ -23,6 +23,7 @@ export class BookComponent implements OnInit  {
   bookId: string | null;
   book: BookDTO;
 
+
   pageSize: number = 10;
   headingsToDisplay = ['', 'No.', 'Chapter Title', 'Uploaded Date', 'Coins Required']
   columnsToDisplay = ['isLocked','chapterNo', 'chapterTitle', 'createdDate', 'pointsRequiredForChapter']
@@ -60,9 +61,9 @@ export class BookComponent implements OnInit  {
   getChapter(chapter: Chapter) {
     if(chapter.chapterNo <= 3 || !chapter.isLocked) {
       this.chapterService.getChapterById(chapter.chapterId).subscribe(res => {
-        var file = new Blob([res], { type: 'application/pdf' });            
+        var file = new Blob([res], { type: 'application/pdf' }); 
         var fileURL = URL.createObjectURL(file);
-        window.open(fileURL);
+        this.router.navigateByUrl('/view/chapter', { state: { fileUrl: fileURL }});
       });
       // call api retrieve content
     } 
