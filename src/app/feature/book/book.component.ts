@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookDTO } from 'src/app/core/models/bookdto.model';
 import { MockDataService } from 'src/app/mockdata/mockdata.service';
 import { GenreEnum, GenreList } from 'src/app/core/constants/enum';
@@ -12,6 +12,8 @@ import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { WalletService } from 'src/app/http-services/wallet.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 import { PaymentService } from 'src/app/http-services/payment.service';
+import { ChapterService } from 'src/app/http-services/chapter.service';
+import { EventService } from 'src/app/services/event.service';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -28,7 +30,7 @@ export class BookComponent implements OnInit  {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private paymentService: PaymentService, private walletService: WalletService, private utilService: UtilService, private mockDataService: MockDataService, private bookService:BookService, private route: ActivatedRoute) { }
+  constructor(private router:Router, private eventService: EventService, private chapterService: ChapterService, private paymentService: PaymentService, private walletService: WalletService, private utilService: UtilService, private mockDataService: MockDataService, private bookService:BookService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -55,8 +57,13 @@ export class BookComponent implements OnInit  {
     return data+coverImage.data;
   }
 
-  getChapter(chapter: any) {
-    if(chapter.chapterNo <= 3) {
+  getChapter(chapter: Chapter) {
+    if(chapter.chapterNo <= 3 || !chapter.isLocked) {
+      this.chapterService.getChapterById(chapter.chapterId).subscribe(res => {
+        var file = new Blob([res], { type: 'application/pdf' });            
+        var fileURL = URL.createObjectURL(file);
+        window.open(fileURL);
+      });
       // call api retrieve content
     } 
     else {
@@ -74,7 +81,6 @@ export class BookComponent implements OnInit  {
         alert("Please login first before purchasing any chapters");
         this.utilService.openDialog(LoginDialogComponent);
       }
-      //check if user is login
       
     }
   }
@@ -88,8 +94,13 @@ export class BookComponent implements OnInit  {
 
   purchaseChapter(chapter:Chapter) {
     this.paymentService.purchaseChapter(chapter).subscribe(data => {
-      console.log(data);
-    })
+      if(data.chapterPurchaseId) {
+        alert("Chapter has successfully purchased");
+        this.eventService.sendUpdate("");
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+        this.router.navigate(['/book/'+this.bookId]));
+      }
+    });
   }
 
 

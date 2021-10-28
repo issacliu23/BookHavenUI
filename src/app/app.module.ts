@@ -28,6 +28,7 @@ import { WalletDialogComponent } from './feature/wallet/wallet-dialog/wallet-dia
 import { EventService } from './services/event.service';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { PaymentService } from './http-services/payment.service';
+import { ChapterService } from './http-services/chapter.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { PaymentService } from './http-services/payment.service';
     HttpClientModule,
     NgxSpinnerModule
   ],
-  providers: [UtilService, BookService, UserService, WalletService, EventService, PaymentService,
+  providers: [UtilService, BookService, UserService, WalletService, EventService, PaymentService, ChapterService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
