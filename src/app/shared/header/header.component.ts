@@ -26,15 +26,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private eventService: EventService, private walletService: WalletService, private router: Router, private utilService: UtilService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    this.walletService.getWallet().subscribe(wallet => {
-      this.walletPoints = wallet.currentPoints;
-    });
+  
     this.eventSubscription = this.eventService.getUpdate().subscribe(data => {
       this.walletService.getWallet().subscribe(wallet => {
         this.walletPoints = wallet.currentPoints;
       })
     })
     if(this.utilService.getToken()) {
+      this.walletService.getWallet().subscribe(wallet => {
+        this.walletPoints = wallet.currentPoints;
+      });
       this.email = this.utilService.getSessionItem('username');
     }
     this.routerSubscription = this.router.events
