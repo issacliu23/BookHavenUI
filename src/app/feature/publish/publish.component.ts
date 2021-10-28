@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { GenreEnum, GenreList } from 'src/app/core/constants/enum';
 import { Book } from 'src/app/core/models/book.model';
 import { BookService } from 'src/app/http-services/book.service';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-publish',
@@ -15,9 +16,10 @@ export class PublishComponent implements OnInit {
   genreList = GenreList;
   imageUrl: any;
   coverImage: File;
-  constructor(private formBuilder: FormBuilder, private bookService: BookService, private router: Router) { }
+  constructor(private eventService: EventService, private formBuilder: FormBuilder, private bookService: BookService, private router: Router) { }
 
   ngOnInit(): void {
+    this.eventService.sendUpdate("update from publish")
     this.initForm();
   }
 
